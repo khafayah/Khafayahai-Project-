@@ -12,7 +12,7 @@ from element_layout import (ELEMENT_COL, TOTAL_GROSS_COL, EMPLOYER_NI_COL,
                              EMPLOYER_PENSION_COL, APPRENTICESHIP_LEVY_COL,
                              BASIC_SALARY_COL, REAL_ELEMENT_COLS)
 
-MAXROWS = 150                       # employee capacity for the comparison engine
+MAXROWS = 90                        # employee capacity for the comparison engine
 HELPERS_FIRST = 2
 HELPERS_LAST = HELPERS_FIRST + MAXROWS - 1   # 151
 
@@ -98,8 +98,8 @@ def build_helpers_sheet(wb):
         ws[f"K{r}"] = f'=IF(ISNUMBER(SEARCH("Head Office",D{r})),{TOL_HO2},{TOL_HG})'
         ws[f"L{r}"] = f'=IF(OR($A{r}="",AND(B{r}="",C{r}="")),"",IF(B{r}="",C{r},IF(C{r}="",-B{r},C{r}-B{r})))'
         ws[f"M{r}"] = f"=IFERROR(L{r}/B{r},\"\")"
-        ws[f"N{r}"] = f'=IF($A{r}="",0,IF(OR(B{r}="",C{r}="",C{r}=0,AND(ISNUMBER(M{r}),ABS(M{r})>K{r})),1,0))'
-        ws[f"O{r}"] = f"=IF(AND(N{r}=1,ABS(L{r})>={MIN_FLAG},F{r}=1),1,0)"
+        ws[f"N{r}"] = f'=IF($A{r}="",0,IF(OR(B{r}="",C{r}="",C{r}=0,IF(ISNUMBER(M{r}),ABS(M{r})>K{r},FALSE)),1,0))'
+        ws[f"O{r}"] = f'=IF(OR($A{r}="",L{r}=""),0,IF(AND(N{r}=1,ABS(L{r})>={MIN_FLAG},F{r}=1),1,0))'
         ws[f"P{r}"] = (f'=IF($A{r}="","",IF(F{r}=0,"Zero Hours",IF(J{r}=1,"Explained: Paired transfer",'
                         f'IF(AND(G{r}=1,H{r}=0,J{r}=0),"Explained: Starter",'
                         f'IF(AND(H{r}=1,G{r}=0,J{r}=0),"Explained: Leaver",'
@@ -121,14 +121,18 @@ def build_helpers_sheet(wb):
             pri = f"SUMIFS('{PBP_SHEET}'!${src_col}${L.PB_DATA_START}:${src_col}${PB_LAST},'{PBP_SHEET}'!${L.PB_REFNO_LETTER}${L.PB_DATA_START}:${L.PB_REFNO_LETTER}${PB_LAST},$A{r})"
             ws[f"{col_letter}{r}"] = f"=({cur})-({pri})"
 
-        diff_rng = f"{diff_start_letter}{r}:{diff_end_letter}{r}"
-        ws[f"{max_letter}{r}"] = ArrayFormula(f"{max_letter}{r}", f"=MAX(ABS({diff_rng}))")
-        ws[f"{driver_letter}{r}"] = ArrayFormula(
-            f"{driver_letter}{r}",
-            f'=IF({max_letter}{r}<0.005,"",IFERROR(INDEX(${diff_start_letter}$1:${diff_end_letter}$1,MATCH({max_letter}{r},ABS({diff_rng}),0)),""))')
-        ws[f"{driver_val_letter}{r}"] = ArrayFormula(
-            f"{driver_val_letter}{r}",
-            f'=IF({max_letter}{r}<0.005,"",IFERROR(INDEX({diff_rng},MATCH({max_letter}{r},ABS({diff_rng}),0)),""))')
+        elem_letters = [get_column_letter(real_start_col + i) for i in range(len(REAL_ELEMENTS))]
+        # Plain (non-array) formulas throughout - nested MAX/IF chains avoid CSE
+        # array-formula recalculation, which is far slower and less reliable
+        # under LibreOffice headless recalculation than ordinary formulas.
+        ws[f"{max_letter}{r}"] = "=MAX(" + ",".join(f"ABS({c}{r})" for c in elem_letters) + ")"
+        driver_chain = '""'
+        val_chain = '""'
+        for c in reversed(elem_letters):
+            driver_chain = f'IF(ABS({c}{r})={max_letter}{r},{c}$1,{driver_chain})'
+            val_chain = f'IF(ABS({c}{r})={max_letter}{r},{c}{r},{val_chain})'
+        ws[f"{driver_letter}{r}"] = f'=IF({max_letter}{r}<0.005,"",{driver_chain})'
+        ws[f"{driver_val_letter}{r}"] = f'=IF({max_letter}{r}<0.005,"",{val_chain})'
         ws[f"{rank_letter}{r}"] = f'=IF(R{r}=1,ABS(L{r})-ROW()/100000000,"")'
 
     return {"diff_start": diff_start_letter, "diff_end": diff_end_letter,
@@ -351,7 +355,7 @@ def build_summary_sheet(wb, helper_cols):
     ws[f"D{hc_row+2}"] = f"=COUNTA('{NS_SHEET}'!$D${L.NS_DATA_START}:$D${NS_LAST})"
     ws[f"B{hc_row+3}"] = "- Leavers"
     ws[f"D{hc_row+3}"] = f"=COUNTA('{LV_SHEET}'!$D${L.LV_DATA_START}:$D${LV_LAST})"
-    ws[f"B{hc_row+4}"] = "= Expected current records"
+    ws[f"B{hc_row+4}"] = "Expected current records (Prior + Starters - Leavers)"
     ws[f"D{hc_row+4}"] = f"=D{hc_row+1}+D{hc_row+2}-D{hc_row+3}"
     ws[f"B{hc_row+5}"] = "Actual current records"
     ws[f"D{hc_row+5}"] = f"=COUNT('{NPV_SHEET}'!$F${L.NPV_DATA_START}:$F${NPV_LAST})"
@@ -576,7 +580,7 @@ def build_drilldown_sheet(wb):
         ws[f"D{r}"] = f'=IF({lookup_ref}="","",C{r}-B{r})'
         ws[f"E{r}"] = f'=IFERROR(D{r}/B{r},"")'
         ws[f"F{r}"] = (f'=IF({lookup_ref}="","",IF(AND(ABS(D{r})>={MIN_FLAG},'
-                        f'OR(B{r}=0,AND(ISNUMBER(E{r}),ABS(E{r})>$C${tol_lookup_row}))),"CHECK",""))')
+                        f'OR(B{r}=0,IF(ISNUMBER(E{r}),ABS(E{r})>$C${tol_lookup_row},FALSE))),"CHECK",""))')
         for col, fmt in [("B", '#,##0.00'), ("C", '#,##0.00'), ("D", '#,##0.00'), ("E", '0.0%')]:
             ws[f"{col}{r}"].number_format = fmt
         for col in "ABCDEF":
