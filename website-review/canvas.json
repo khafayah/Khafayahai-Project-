@@ -1,0 +1,10 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 794, "h": 1123, "title": "Scorecard", "print": "fixed" },
+    { "file": "Priorities.dc.html", "x": 894, "y": 0, "w": 794, "h": 1123, "title": "Priorities and findings", "print": "fixed" }
+  ],
+  "annotations": [
+    { "id": "how-to-use", "x": 0, "y": -160, "w": 640, "text": "Two page review sheet for a private therapy practice website.\nScore the ten areas on page one. Write the detail into the findings table on page two.\nExport as PDF to send it to her." }
+  ],
+  "launch": { "view": "canvas" }
+}
