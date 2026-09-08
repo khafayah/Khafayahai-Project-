@@ -1,0 +1,8 @@
+# WORK IN PROGRESS. Search engines are blocked while the site is unfinished.
+# ON LAUNCH DAY: delete the two lines below and uncomment the two after them,
+# and set LAUNCHED = true in src/lib/site.ts.
+User-agent: *
+Disallow: /
+
+# User-agent: *
+# Allow: /
