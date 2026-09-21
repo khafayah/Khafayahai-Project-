@@ -44,7 +44,10 @@ reason. Both are live in the project.
    performance, proportionate payment, and the 14 day refund deadline with
    the same-payment-method rule. A Schedule 3 Model Cancellation Form is
    published. The operating process is recorded in Notion as
-   "SOP: Khafayah.AI Consumer Cancellation & Durable Medium" under KAOS HQ.
+   "SOP: Khafayah.AI Consumer Cancellation & Durable Medium" under KAOS HQ,
+   with a per-contract "Consumer Contract Record - Schedule 2 Checklist"
+   template beneath it. Terms clause 3 also states that £300 is the total
+   price and no VAT is charged. Workstream closed 21 September 2026.
 3. Confirm Lovable injects no analytics, since the privacy notice states
    publicly that there are none.
 4. Dark theme is themed but unreachable. Nothing sets the `dark` class.
