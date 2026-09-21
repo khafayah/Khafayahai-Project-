@@ -47,7 +47,16 @@ reason. Both are live in the project.
    "SOP: Khafayah.AI Consumer Cancellation & Durable Medium" under KAOS HQ,
    with a per-contract "Consumer Contract Record - Schedule 2 Checklist"
    template beneath it. Terms clause 3 also states that £300 is the total
-   price and no VAT is charged. Workstream closed 21 September 2026.
+   price and no VAT is charged.
+
+   Scope later broadened to cover every Khafayah.AI consumer service sold
+   at a distance: the £300 Clear Offer Page, the £650 Payroll Consultancy
+   Market-Ready Sprint, and future one-off services. A separate Regulation
+   37 SOP covers digital downloads. A Consumer Service Proposal Template
+   sits under the service SOP.
+
+   KHAFAYAH.AI CONSUMER CONTRACTING & DIGITAL CONTENT COMPLIANCE - CLOSED,
+   21 September 2026.
 3. Confirm Lovable injects no analytics, since the privacy notice states
    publicly that there are none.
 4. Dark theme is themed but unreachable. Nothing sets the `dark` class.
