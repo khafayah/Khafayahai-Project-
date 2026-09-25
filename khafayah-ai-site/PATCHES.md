@@ -65,8 +65,13 @@ reason. Both are live in the project.
    21 September 2026.
 3. Confirm Lovable injects no analytics, since the privacy notice states
    publicly that there are none.
-4. Dark theme is themed but unreachable. Nothing sets the `dark` class.
-   Add a toggle, or delete the block.
+4. ~~Dark theme is themed but unreachable.~~ CLOSED 25 September 2026.
+   The `.dark` block is deleted. The `@custom-variant dark` line was kept
+   deliberately: `src/components/ui/alert.tsx` carries one `dark:` utility,
+   and removing the variant would let Tailwind fall back to its built-in
+   prefers-color-scheme behaviour, so that utility would start firing on
+   devices set to dark mode. Keeping the line leaves it inert. Verified in
+   a browser with the device set to dark: the page renders identically.
 5. ~~The samples grid is `lg:grid-cols-2` with one card in it.~~ CLOSED
    22 September 2026. It now holds two cards.
 6. Launch day: set `LAUNCHED = true`, update `public/robots.txt`, and set
