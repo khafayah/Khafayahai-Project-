@@ -36,8 +36,14 @@ reason. Both are live in the project.
 
 ## Still open
 
-1. Permission from the practitioner for the practice page and her words.
-   Then set `SHOW_PRACTICE_SAMPLE = true` in `src/lib/site.ts`.
+1. ~~Permission from the practitioner for the practice page.~~ CLOSED
+   22 September 2026. Granted in writing on three conditions, all met
+   before the gate was opened: her personal name does not appear (it never
+   did), the reference to her child being medically unwell was removed,
+   and the footer no longer describes her practice as being for Muslim
+   women. Both changes were made to the Healing Hearts project
+   (478e452d-3ae4-4930-a126-41fecee0cc69) and that page was redeployed
+   before the sample went live. `SHOW_PRACTICE_SAMPLE` is now true.
 2. ~~Consumer cancellation position in the terms.~~ CLOSED 21 September 2026.
    Clause 9 now splits Business Customers from Consumers, states the 14 day
    period, the express early-start request, loss of the right on full
@@ -61,6 +67,7 @@ reason. Both are live in the project.
    publicly that there are none.
 4. Dark theme is themed but unreachable. Nothing sets the `dark` class.
    Add a toggle, or delete the block.
-5. The samples grid is `lg:grid-cols-2` with one card in it.
+5. ~~The samples grid is `lg:grid-cols-2` with one card in it.~~ CLOSED
+   22 September 2026. It now holds two cards.
 6. Launch day: set `LAUNCHED = true`, update `public/robots.txt`, and set
    `SITE_URL` to the custom domain.
