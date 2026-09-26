@@ -151,8 +151,18 @@ and anything shared privately. Her name is not recorded in this repository
 and must not be added to it. If anyone asks who said it, the answer is that
 she asked not to be named.
 
-The quotation is not on the website as at 26 September 2026. It appears only
-in copy written for sharing elsewhere.
+The quotation is on the Ilubirin App page, `/ecosystem/healing-app`, added
+26 September 2026. It sits between the App description and the access terms,
+so it reads as one woman's experience rather than as a line placed next to a
+price. It is styled with the left accent border and display type already used
+elsewhere on the site: no card, no panel, no stars, no heading such as
+"Testimonial".
+
+The rendered text was compared against the original character for character
+before it went in. It is reproduced exactly, including the word "really",
+which stays because altering someone's words is not ours to do.
+
+It is the only quotation on the site.
 
 ## Carried over from the QA audit of 1 September 2026
 
