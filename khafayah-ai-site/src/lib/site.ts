@@ -11,12 +11,12 @@ export const PRICE = "£300";
  * Set this to true on launch day. It is the only change needed.
  * public/robots.txt must be updated at the same time.
  */
-export const LAUNCHED = false;
+export const LAUNCHED = true;
 
 export const ROBOTS = LAUNCHED ? "index, follow" : "noindex, nofollow";
 
 /** Update this one line when the custom domain goes live. */
-export const SITE_URL = "https://real-reach-builder.lovable.app";
+export const SITE_URL = "https://khafayah.ai";
 
 export const SHARE_IMAGE = `${SITE_URL}/share-image.jpg`;
 
@@ -39,7 +39,7 @@ export const WHATSAPP_LINK = `https://wa.me/447585847631?text=${encodeURICompone
   WHATSAPP_MESSAGE,
 )}`;
 export const WHATSAPP_NUMBER_DISPLAY = "+44 7585 847631";
-export const EMAIL = "khafayah@khafayahconsultancyltd.com";
+export const EMAIL = "hello@khafayah.ai";
 export const EMAIL_LINK = `mailto:${EMAIL}?subject=Clear%20Offer%20Page%20enquiry`;
 
 export const SENSITIVE_WARNING =

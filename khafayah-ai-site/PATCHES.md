@@ -63,8 +63,12 @@ reason. Both are live in the project.
 
    KHAFAYAH.AI CONSUMER CONTRACTING & DIGITAL CONTENT COMPLIANCE - CLOSED,
    21 September 2026.
-3. Confirm Lovable injects no analytics, since the privacy notice states
-   publicly that there are none.
+3. ~~Confirm Lovable injects no analytics, since the privacy notice states
+   publicly that there are none.~~ REPORTED COMPLETE 26 September 2026.
+   The checks were carried out in a separate session. The result was not
+   independently re-verified in this record, so if the privacy notice is
+   ever challenged, re-run the Network tab check on the live domain before
+   relying on this line.
 4. ~~Dark theme is themed but unreachable.~~ CLOSED 25 September 2026.
    The `.dark` block is deleted. The `@custom-variant dark` line was kept
    deliberately: `src/components/ui/alert.tsx` carries one `dark:` utility,
@@ -74,5 +78,30 @@ reason. Both are live in the project.
    a browser with the device set to dark: the page renders identically.
 5. ~~The samples grid is `lg:grid-cols-2` with one card in it.~~ CLOSED
    22 September 2026. It now holds two cards.
-6. Launch day: set `LAUNCHED = true`, update `public/robots.txt`, and set
-   `SITE_URL` to the custom domain.
+6. ~~Launch day: set `LAUNCHED = true`, update `public/robots.txt`, and set
+   `SITE_URL` to the custom domain.~~ CLOSED 26 September 2026. The site is
+   live. See "Launched" below.
+
+## Launched
+
+Live from 26 September 2026 at **https://khafayah.ai**.
+
+| Item | State on launch |
+|------|-----------------|
+| Domain | `khafayah.ai`, bought by the owner and connected in Lovable |
+| Second domain | `khafayah.com`, held to protect the name |
+| `LAUNCHED` | `true` |
+| `SITE_URL` | `https://khafayah.ai` |
+| `public/robots.txt` | Allows all crawlers, points to the sitemap |
+| `public/sitemap.xml` | Home, privacy and terms, all on the custom domain |
+| Contact email | `hello@khafayah.ai`, on Google Workspace |
+| `SHOW_PRACTICE_SAMPLE` | `true`, under the written permission recorded at item 1 |
+| Price | £300, no VAT charged |
+
+The launch changes were applied in a separate session and verified here by
+reading `src/lib/site.ts`, `public/robots.txt` and `public/sitemap.xml`
+directly from the live project.
+
+Note: the contact email moved from `khafayah@khafayahconsultancyltd.com` to
+`hello@khafayah.ai` at launch. Both the Kit products and any invoice
+templates that still carry the old address need checking.
