@@ -137,8 +137,12 @@ Lifetime Access", £12.99 GBP, type download, published.
 
 **Quotation from a woman who used the App.** Agreed by the person who wrote
 it, sent to Khafayah by WhatsApp. She is content for her words to be used.
-The WhatsApp message is the evidence and should be kept. The exact date of
-agreement is not recorded here and should be added.
+The WhatsApp message is the evidence and should be kept.
+
+Date of agreement: Tuesday 15 September 2026. Khafayah described it as "last
+week Tuesday" on Saturday 26 September 2026, which reads as the Tuesday of
+the previous week. If the WhatsApp thread shows Tuesday 22 September 2026
+instead, correct this line.
 
 **She must not be named.** This was confirmed directly by Khafayah on
 26 September 2026. The quotation is attributed only as "a sister", and that
