@@ -84,17 +84,51 @@ stores or sends is unverified, and it has no privacy information of its own.
 The website must not route anyone to a service whose data handling is
 unknown.
 
-Before setting the flag back to true:
-
-1. Establish what the free version collects, stores or sends. Check analytics,
-   cookies, localStorage, sessionStorage, IndexedDB, form submissions,
-   outbound requests and any server or database connection.
-2. Publish privacy information for the App itself.
-3. Write the App section of the website privacy notice from the findings.
+The data check was completed on 26 September 2026 by reading the App source
+directly. Findings are below. The flag stays false until the website privacy
+notice is published, so that the App and the page explaining it go live
+together.
 
 The App source is not in this repository and not in Google Drive. It sits on
-a local machine in a folder named `ilubirin`. **It is not backed up anywhere.**
-Getting it into a private repository is worth doing on its own merits.
+a local machine in a folder named `ilubirin`, and is deployed on SiteGround.
+**It is not backed up anywhere.** Getting it into a private repository is
+worth doing on its own merits.
+
+### What the App does with personal data
+
+Verified by reading `index.html`, `index_free.html` and `index_full.html` on
+26 September 2026. Khafayah confirmed the deployed version differs only in
+the access code.
+
+Held in the browser's own storage, never transmitted:
+
+| Key | Holds |
+|-----|-------|
+| `ilubirin_tier` | which version was unlocked, free or full |
+| `ilubirin_saved` | the saved Name and ayah, not free text |
+
+Sent off the device, only when a woman submits the optional feedback:
+the rating out of five, the free text she typed, whether she ticked the
+testimonial permission box, the timestamp, and which Name she was reading.
+No name, email address or telephone number is asked for or collected.
+
+Delivery is by **EmailJS**, loaded from **jsDelivr**. Both receive the
+visitor's IP address as part of serving the page. Two things remain
+unverified: which country EmailJS processes data in, which decides whether an
+international transfer line is needed, and which inbox the template delivers
+to.
+
+The full version also offers an "email my reflection" button, which opens the
+woman's own email client with the text filled in. Nothing is transmitted by
+the App.
+
+Not present anywhere in the App: analytics, cookies, tracking pixels,
+advertising code, any Google or Meta connection, any database.
+
+The feedback form carries an unticked checkbox reading "I give permission for
+my words to be shared anonymously as a testimonial". That is a proper
+affirmative consent mechanism and the privacy notice relies on it for that
+purpose only.
 
 ### App access terms
 
@@ -126,10 +160,17 @@ Lifetime Access", £12.99 GBP, type download, published.
 5. **App checkout crosses brands.** The Kit purchase page sits on
    `khafayahcounselling.com`. That cuts across the separation set out above.
    Easier to change before the link is in circulation.
-6. **Paid access code.** A single shared code unlocks the paid App. One buyer
-   passing it on gives lifetime access for nothing. The current code is also
-   no longer private and should be changed. A code per buyer is the fix if the
-   App grows. The code itself is deliberately not recorded here.
+6. **Paid access code.** Both access codes are written in plain text in the
+   JavaScript of the App's gate page, so anyone who views the page source
+   reads the paid code and takes the £12.99 product for nothing. A single
+   shared code also means one buyer passing it on gives lifetime access to
+   anyone. This is normal for a single file app, and it does mean the code is
+   not protecting revenue. A code per buyer is the fix if the App grows.
+   Neither code is recorded here.
+
+   The free access code is `ilubirin`, confirmed live on 26 September 2026,
+   and matches what the website publishes. An earlier local copy used a
+   different value; the deployed version is the authority.
 7. **Launch.** Set `LAUNCHED = true` and swap the two lines in
    `public/robots.txt`, together.
 
