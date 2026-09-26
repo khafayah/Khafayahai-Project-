@@ -137,9 +137,15 @@ Lifetime Access", £12.99 GBP, type download, published.
 
 **Quotation from a woman who used the App.** Agreed by the person who wrote
 it, sent to Khafayah by WhatsApp. She is content for her words to be used.
-Attribution is anonymous, as "a sister". The WhatsApp message is the evidence
-and should be kept. The exact date of agreement is not recorded here and
-should be added.
+The WhatsApp message is the evidence and should be kept. The exact date of
+agreement is not recorded here and should be added.
+
+**She must not be named.** This was confirmed directly by Khafayah on
+26 September 2026. The quotation is attributed only as "a sister", and that
+applies everywhere it is used: the website, social media, printed material,
+and anything shared privately. Her name is not recorded in this repository
+and must not be added to it. If anyone asks who said it, the answer is that
+she asked not to be named.
 
 The quotation is not on the website as at 26 September 2026. It appears only
 in copy written for sharing elsewhere.
