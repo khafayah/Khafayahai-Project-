@@ -15,9 +15,31 @@ domains or positioning.
 
 | Brand | Domain |
 |-------|--------|
-| Ilubirin | `ilubirin.com` |
-| Khafayah Counselling | `khafayahconsultancyltd.com` |
+| Ilubirin, website | `ilubirin.com` |
+| Ilubirin, App | `app.ilubirin.com`, to be moved there |
+| Ilubirin, email | `hello@ilubirin.com`, once created. Interim: `khafayah@khafayahconsultancyltd.com` |
 | Khafayah.AI | `khafayah.ai` |
+| Khafayah Consultancy Limited | `khafayahconsultancyltd.com` |
+| Khafayah Counselling | `khafayahcounselling.com` |
+
+**`khafayahcounselling.com` is being handed to another company to manage.**
+Confirmed by Khafayah on 27 September 2026. Nothing belonging to Ilubirin may
+remain on it. Three things currently do:
+
+1. The App is served from `ilubirin.khafayahcounselling.com`.
+2. The App feedback was delivered to an inbox on that domain. Corrected on
+   27 September 2026 to `khafayah@khafayahconsultancyltd.com`.
+3. The £12.99 App product in Kit sells from that domain.
+
+Items one and three must be moved **while Khafayah still controls the domain**,
+and a permanent redirect set before the handover, because it may not be
+possible afterwards. People who have already bought the App should be told the
+new address directly rather than left relying on a redirect.
+
+One technical constraint: the `FROM_ADDRESS` in `feedback.php` must stay on
+the domain the server serves, or mail fails sender checks and is filed as
+spam. It changes to an address on the new domain at the same time as the App
+moves, not before.
 
 `ilubirin.com` was bought at Namecheap and is registered. As at 26 September
 2026 its DNS is not pointed anywhere and it still shows the registrar holding
