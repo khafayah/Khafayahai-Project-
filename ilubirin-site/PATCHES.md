@@ -102,10 +102,15 @@ the access code.
 
 Held in the browser's own storage, never transmitted:
 
-| Key | Holds |
-|-----|-------|
-| `ilubirin_tier` | which version was unlocked, free or full |
-| `ilubirin_saved` | the saved Name and ayah, not free text |
+| Key | Storage | Holds |
+|-----|---------|-------|
+| `ilubirin_tier` | sessionStorage, clears when the browser closes | which version was unlocked |
+| `ilubirin_saved` | localStorage, persists | the saved Name and ayah, not free text |
+
+The local copies on Khafayah's machine use `localStorage` for the tier. The
+deployed files use `sessionStorage`. The deployed version is the authority.
+Live files were last modified in April 2026, so the local copies have drifted
+from what is served. Worth reconciling.
 
 Sent off the device, only when a woman submits the optional feedback:
 the rating out of five, the free text she typed, whether she ticked the
@@ -122,8 +127,35 @@ The full version also offers an "email my reflection" button, which opens the
 woman's own email client with the text filled in. Nothing is transmitted by
 the App.
 
-Not present anywhere in the App: analytics, cookies, tracking pixels,
-advertising code, any Google or Meta connection, any database.
+Not present anywhere in the App: third party analytics, cookies, tracking
+pixels, advertising code, any Google or Meta connection, any database, any
+form element, any fetch or XMLHttpRequest call.
+
+### Verified from the live systems, 27 September 2026
+
+Checked in SiteGround and against EmailJS published terms.
+
+| Item | Finding |
+|------|---------|
+| App host | SiteGround GrowBig, data centre London, United Kingdom |
+| Certificate | Let's Encrypt, valid, expires 28 November 2026 |
+| Server access logs | 30 daily archives. Hold IP address, timestamp, request type, URI, status code, referrer, user agent |
+| Traffic statistics | **SiteGround Traffic is switched on** for the App subdomain |
+| Backups | Automated daily, retained about 30 days |
+| EmailJS processing | United States, on AWS |
+| EmailJS retention | Request activity and metadata, 30 days for active accounts. Can be deactivated per template |
+| EmailJS DPA | Published and available. **Acceptance by this account not confirmed** |
+| EmailJS recipient inbox | Not verified. Dashboard was not authenticated |
+
+The SiteGround Traffic finding matters. An earlier draft of the notice said
+"we do not use analytics" without qualification. That would have been wrong
+for the App. The published notice now distinguishes the website, which uses
+none, from the App, whose host produces visitor counts from its own server
+logs. No cookies are set and no third party tracking is involved.
+
+The EmailJS transfer to the United States requires a safeguard. The notice
+names the EmailJS data processing agreement as that safeguard, so **the
+agreement must actually be in place before the notice is published.**
 
 The feedback form carries an unticked checkbox reading "I give permission for
 my words to be shared anonymously as a testimonial". That is a proper
