@@ -153,9 +153,37 @@ for the App. The published notice now distinguishes the website, which uses
 none, from the App, whose host produces visitor counts from its own server
 logs. No cookies are set and no third party tracking is involved.
 
-The EmailJS transfer to the United States requires a safeguard. The notice
-names the EmailJS data processing agreement as that safeguard, so **the
-agreement must actually be in place before the notice is published.**
+### EmailJS international transfer: unresolved
+
+Verified against the EmailJS account and their published terms on
+27 September 2026. **No UK transfer safeguard could be confirmed.** Two
+problems, either of which is enough on its own.
+
+1. **The DPA is scoped to the EU GDPR.** The Terms incorporate it "to the
+   extent that EmailJS processes any personal data that is subject to the EU
+   General Data Protection Regulation". Ilubirin's data is subject to the UK
+   GDPR. On a plain reading the clause does not reach it.
+2. **EU SCCs alone do not cover a UK restricted transfer.** The DPA relies on
+   "EU approved standard contractual clauses". ICO guidance states the EU SCCs
+   are not valid on their own for UK restricted transfers, and that the UK
+   Addendum is what allows reliance on them. Neither an Addendum nor an IDTA
+   is visible on the account.
+
+EmailJS Pte. Ltd. is a Singapore-registered company processing in the United
+States.
+
+**The privacy notice must not name a UK transfer safeguard.** Until EmailJS
+answers, the notice states the position as unresolved and offers women the
+choice not to use the feedback box.
+
+### The recommended fix
+
+Replace EmailJS with a small form handler on SiteGround, which already hosts
+the App in London. That removes the transfer, removes both EmailJS and
+jsDelivr as processors, and keeps the feedback anonymous.
+
+The alternative of a mailto link also removes the transfer but reveals the
+woman's own email address, which is the wrong trade for this audience.
 
 The feedback form carries an unticked checkbox reading "I give permission for
 my words to be shared anonymously as a testimonial". That is a proper
