@@ -198,7 +198,42 @@ States.
 answers, the notice states the position as unresolved and offers women the
 choice not to use the feedback box.
 
-### The recommended fix
+### RESOLVED, 27 September 2026
+
+EmailJS has been removed. The App now posts its feedback to a handler on the
+same SiteGround server in London, which emails it to
+`khafayah@khafayahconsultancyltd.com`.
+
+Verified on the live App by a third party: the test feedback arrived, both
+access code routes load, and the live session made no request to
+`emailjs.com` or `cdn.jsdelivr.net`. The EmailJS account now holds no
+services and no templates.
+
+**There is no longer any transfer of personal data outside the United
+Kingdom** arising from the App. The privacy notice's international transfer
+section is removed, and EmailJS and jsDelivr come off the processor list.
+
+Interim state while the App is still served from the counselling domain: the
+handler sends from `noreply@khafayahcounselling.com`, because mail sent by a
+server must claim an address on the domain that server serves. It changes to
+`noreply@ilubirin.com` when the App moves to `app.ilubirin.com`, and the
+delivery address changes to `hello@ilubirin.com` once that mailbox exists and
+has been tested.
+
+### Discovered 27 September 2026: existing mail forwarding on ilubirin.com
+
+The MX records on `ilubirin.com` are Namecheap email forwarding, not Google
+Workspace. Something is already forwarding mail for that domain and neither
+the owner nor this record knew it.
+
+Two actions follow. Establish where it currently forwards to, and either
+record it as a processor or switch it off. When Google Workspace is set up,
+its MX records must **replace** the Namecheap records rather than sit
+alongside them, or mail will be lost.
+
+### The fix that was applied
+
+### Why this route was chosen
 
 Replace EmailJS with a small form handler on SiteGround, which already hosts
 the App in London. That removes the transfer, removes both EmailJS and
