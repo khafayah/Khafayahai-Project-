@@ -294,6 +294,24 @@ redirect makes those unreachable.
 It is being lifted temporarily and restored on 4 October, and the seven people
 affected are being emailed before then.
 
+## Khafayah Counselling separation, 29 September 2026
+
+Khafayah Counselling is moving to its own domain, built and managed by another
+company (WebHealer). **No Khafayah Counselling address appears anywhere in the
+Ilubirin site.** The `counsellingEmail` entry is deleted.
+
+The "I think I may need deeper support" panel on `/begin` previously showed
+that address. It now shows a link reading "Ask about counselling" pointing at
+the Ilubirin contact page. The name and the note about it being a separate
+specialist service are unchanged.
+
+Reason for a link rather than nothing: that panel is where a woman says she
+needs more than Ilubirin offers. Removing the only onward route at that moment
+would leave her with nowhere to go. **When the counselling site is live,
+replace that link with a link to it.**
+
+The site now carries exactly one email address, `hello@ilubirin.com`.
+
 ## Open items
 
 1. **App data check.** Run against the free version, not the paid one. Blocks
