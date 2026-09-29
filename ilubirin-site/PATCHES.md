@@ -262,6 +262,38 @@ thing was free, then meet a paywall after ten Names.
 Verified in Kit on 26 September 2026: product 269220, "Ilubirin Healing App,
 Lifetime Access", £12.99 GBP, type download, published.
 
+## Live as at 29 September 2026
+
+The App has moved and Ilubirin has its own mailbox. Verified independently.
+
+| Item | State |
+|------|-------|
+| App | `https://app.ilubirin.com`, live on SiteGround, Let's Encrypt SSL, HTTP redirects to HTTPS |
+| Old App address | `ilubirin.khafayahcounselling.com` returns 301 to the new address |
+| App deployment | Checksum verified through the private repository `khafayah/ilubirin-siteground-deploy` |
+| Feedback route | App to `noreply@ilubirin.com` to `hello@ilubirin.com`, entirely within the United Kingdom |
+| Ilubirin mailbox | `hello@ilubirin.com`, an alias on the existing Google Workspace user. No second licence bought |
+| Namecheap forwarding | Removed. No forwarding rules and no catch-all ever existed, so nothing was being collected |
+
+DNS on `ilubirin.com` that must not be altered: the Google MX record, the Google
+verification TXT, the `app` A record, and the single combined SPF record which
+authorises both Google and SiteGround.
+
+**DMARC is deliberately not published.** SiteGround sends the App's mail with
+its own envelope address, so SPF cannot align with `noreply@ilubirin.com` and
+DKIM is what must pass. Publishing an enforcing DMARC policy before both DKIM
+routes pass would send Ilubirin's own feedback to quarantine.
+
+### The redirect went on early
+
+The 301 from the old App address was set before 4 October, which was the date
+agreed so that existing users could retrieve reflections saved in their
+browsers at the old address. Browser storage is tied to the web address, so the
+redirect makes those unreachable.
+
+It is being lifted temporarily and restored on 4 October, and the seven people
+affected are being emailed before then.
+
 ## Open items
 
 1. **App data check.** Run against the free version, not the paid one. Blocks
