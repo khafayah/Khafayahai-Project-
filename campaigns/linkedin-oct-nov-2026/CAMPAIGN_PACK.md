@@ -551,3 +551,23 @@ For each post, before it moves from draft to scheduled:
 3. Approve the two wording changes in Posts C and D (no "actually", no "can"). Post A keeps your brief hook "not just a service problem" unchanged, as the hook is yours.
 4. Confirm the "Sarah" name in Post E carries no link to a real colleague.
 5. Alt text: confirm whether you want alt text drafted for each graphic. Recommended for accessibility.
+
+---
+
+## 7. Built graphics
+
+Built on 2 October 2026. All five are 1200 × 1200 PNG, in `graphics/png/`.
+
+| Date | File |
+|---|---|
+| Fri 9 Oct | `2026-10-09_payroll-control-note_busy-inbox.png` |
+| Wed 14 Oct | `2026-10-14_responsible-ai_investigate-not-decide.png` |
+| Wed 28 Oct | `2026-10-28_payroll-control-note_errors-start-before-payroll.png` |
+| Mon 2 Nov | `2026-11-02_responsible-ai_automation-bad-data.png` |
+| Fri 6 Nov | `2026-11-06_payroll-control-note_ask-sarah.png` |
+
+- Fonts: Fraunces (serif headings) and Inter (sans-serif body). Both are free, open-licence fonts. Copies sit in `graphics/fonts/`.
+- Monogram: a rounded-square K, drawn to match the locked visual standard in Notion. The original Payroll AI Bites files could not be downloaded from this session. Compare the wordmark against your Bite 01 file before staging. If it differs, send me the logo file and I will rebuild.
+- Mobile preview: `graphics/mobile-preview.png` shows all five at 375 px wide. The hooks read clearly. The label, footer and method pills are small at phone size. That is by design, as the hook carries the message.
+- To rebuild after any wording change: edit `graphics/build.mjs`, then run `node build.mjs`.
+- Edits from the earlier pack: none to the wording. The 9 October graphic uses the shorter supporting line from Section 3. No envelope icons were added, to keep one accent per design.
