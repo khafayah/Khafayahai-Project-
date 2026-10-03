@@ -380,3 +380,62 @@ and og:url tags.
 Still open from it: no og:image, so shared links preview as a blank card;
 `min-h-screen` rather than `min-h-dvh`; and the mobile menu tap target
 measured at 35 by 20 pixels, below the 44 by 44 guideline.
+
+## Part C: the domain connection, 3 October 2026
+
+Carried out by Manus. Verified independently from this session the same day.
+
+`ilubirin.com` now serves the Lovable website. Before this, the name resolved
+to nothing at all: a lookup failed at the DNS stage, so there was no website
+to reach at the address.
+
+Records now in place at Namecheap:
+
+- A record, host `@`, value `185.158.133.1`
+- A record, host `www`, value `185.158.133.1`
+- TXT record, host `_lovable.www`, value `lovable_verify=cf2c32d9...b918`
+
+The TXT record was not in the original instruction. Lovable requires it to
+verify ownership of the `www` subdomain before it issues a certificate for it.
+Manus found the requirement and added it.
+
+The old Namecheap URL redirect from `ilubirin.com` to `http://www.ilubirin.com/`
+was removed. It had to go, because it worked by occupying the root records that
+Lovable needed. Do not re-add it.
+
+### What was verified, and how
+
+Checked by fetching each address over HTTPS on 3 October 2026:
+
+- `https://ilubirin.com` returned 200 and served the Ilubirin home page.
+- `https://www.ilubirin.com` returned 200 and redirected to the root address.
+  The redirect followed, which means the TLS handshake on `www` succeeded.
+  Manus reported `www` as still provisioning; by the time of this check it was
+  already working.
+- `https://app.ilubirin.com` returned 200 and served the access-code gate.
+  Unaffected, as intended.
+
+Direct certificate inspection was not possible from this session. Outbound
+connections from the container are blocked by the egress proxy, so the evidence
+above is a successful HTTPS fetch rather than a reading of the certificate
+chain itself.
+
+`robots` on every page still reads `noindex, nofollow`, which is correct.
+`LAUNCHED` remains `false`. The website is reachable but not yet open.
+
+### Email records untouched
+
+The Google MX records, SPF, DKIM and DMARC entries were not altered during
+Part C. This was a standing instruction and it was followed.
+
+### Still open before launch
+
+1. `/privacy` and `/terms` are both still placeholders. Each renders a single
+   sentence saying the text will be published before launch. The privacy notice
+   is finished and dated 30 September 2026. The terms are drafted and awaiting
+   approval.
+2. `SHOW_APP_LINK` stays `false` until the privacy notice is published.
+3. `LAUNCHED` to `true`, together with the two robots.txt lines, as one step.
+4. `og:image` now resolves, but to a Lovable-generated screenshot on `r2.dev`
+   rather than a designed share image. Shared links will preview a screenshot
+   of the home page.
