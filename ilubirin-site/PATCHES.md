@@ -514,3 +514,60 @@ switches.
 6. From the QA audit of 1 September 2026: `min-h-screen` rather than
    `min-h-dvh`, and the mobile menu tap target at 35 by 20 pixels, below the
    44 by 44 guideline.
+
+## Correction and findings on the Kit account, 3 October 2026
+
+### Correction
+
+The launch record above says the £12.99 checkout "still sits on
+khafayahcounselling.com". That is wrong. I checked the Kit account directly
+and the checkout page is at:
+
+    https://fabulous-composer-2982.kit.com/products/ilubirin-healing-app-lifetime-acc
+
+That is Kit's own default subdomain, not khafayahcounselling.com. The page is
+live and takes payment. Product id 269220.
+
+### What is actually on khafayahcounselling.com
+
+The root of khafayahcounselling.com serves a Kit landing page. The favicon is
+Kit's own, and the content is Ilubirin material: Healing Circles and Workshops,
+faith-centred journals, "Online Community: The Ilubirin Circle", and a mailing
+list sign-up headed "5 DUA's JOIN OUR MAILING LIST".
+
+So the exposure on that domain is not the checkout. It is a live Ilubirin
+landing page with a form that collects email addresses, sitting on the domain
+being handed to another company to manage.
+
+The likely source is the v1 landing page "Free Guide: 5 Du'as for Healing After
+Narcissistic Abuse" (id 8064344, last published 20 May 2025). That is a match
+on content, not a confirmed mapping.
+
+khafayahcounselling.com is a verified domain inside the Kit account
+(domain id 5505115).
+
+### The delivery address could not be read
+
+The product is a "url" type product, which delivers by sending the buyer to an
+address after payment. The Kit API does not return that address, so it could
+not be read from this session. It has to be checked by opening the product in
+Kit at https://app.kit.com/products/269220/edit
+
+If it still points at ilubirin.khafayahcounselling.com, buyers currently arrive
+by way of the redirect on a domain that is being handed over. That redirect
+disappears when the handover completes.
+
+The old address could not be tested from here either. SiteGround's bot
+protection answered instead of the page, which says nothing either way about
+whether the redirect works.
+
+### Already set up and waiting
+
+pay.ilubirin.com is listed in the Kit account as a domain but is not verified
+(domain id 6905245). It is the natural home for the checkout.
+
+### Purchases
+
+Three purchases of the Ilubirin Healing App, all at £12.99, on 9 May, 13 June
+and 29 June 2026. This matches the three historic sales already recorded, and
+those buyers have already been emailed.
