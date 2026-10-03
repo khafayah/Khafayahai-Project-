@@ -439,3 +439,78 @@ Part C. This was a standing instruction and it was followed.
 4. `og:image` now resolves, but to a Lovable-generated screenshot on `r2.dev`
    rather than a designed share image. Shared links will preview a screenshot
    of the home page.
+
+## Launched, 3 October 2026
+
+Ilubirin is live at https://ilubirin.com.
+
+Approved by Khafayah on 3 October 2026: the publication date, the contact
+address on both documents, and the launch itself.
+
+### What went live
+
+**The privacy notice**, at `/privacy`. Dated 3 October 2026. Contact address
+`hello@ilubirin.com`. This is the version produced after the UK GDPR red-team
+and the final technical check, with the three conservatively-worded sentences
+that the technical check required: the website analytics wording says "of our
+own" and acknowledges the hosting platform, the font claim is limited to what
+was verified, and the App feedback sentence names Google rather than claiming
+no other company is involved. Lovable is named as the website host.
+
+**The terms**, at `/terms`. Dated 3 October 2026. Contact address
+`hello@ilubirin.com`, changed from `khafayah@khafayahconsultancyltd.com` so
+that both legal documents carry the same address.
+
+The eighteen-and-over clause in the terms was queried and kept. The site does
+not check age, and the clause does not claim that it does. Removing it would
+leave the site reading as open to children, which brings in the ICO's
+children's code. The clause is a statement of who the site is for, which is
+what helps show Ilubirin is not aimed at children.
+
+**`SHOW_APP_LINK` set to `true`.** The "Open the Ilubirin App" button now
+appears on `/ecosystem/healing-app` and opens `https://app.ilubirin.com`. The
+gate comment in `src/lib/links.ts` was rewritten to record why it was opened
+and to require that `/privacy` is updated first if the App changes what it
+collects.
+
+**`LAUNCHED` set to `true`** and `public/robots.txt` replaced, in the same
+change, so the two never disagree. robots.txt now reads:
+
+    User-agent: *
+    Allow: /
+
+    Sitemap: https://ilubirin.com/sitemap.xml
+
+### Verified live after deployment
+
+Checked by fetching each address on 3 October 2026:
+
+- `/privacy` returns 200, carries the full notice, shows 3 October 2026, and
+  the contact address is `hello@ilubirin.com`.
+- `/terms` returns 200, carries the full terms, same date, same address.
+- `/ecosystem/healing-app` returns 200 and the only outbound links are
+  `https://app.ilubirin.com/` and the ecosystem page.
+- `https://ilubirin.com/robots.txt` serves the three lines above exactly.
+- Every page checked now carries `index, follow` rather than
+  `noindex, nofollow`.
+
+Lovable commits: `0f25978` for the two legal pages, `dfe2cd7` for the launch
+switches.
+
+### Still open
+
+1. The paid access code for the full App is in the App's page source in plain
+   text, and was exposed in conversation. Khafayah's decision on whether to
+   change it is outstanding. My advice was to leave it.
+2. Kit: the £12.99 checkout still sits on `khafayahcounselling.com`, which is
+   being handed to another company. It needs to move, and its delivery email
+   needs to point at `app.ilubirin.com`.
+3. DKIM for Google and SiteGround, then DMARC, per Manus's plan.
+4. Seven correction drafts in khafayah@gmail.com, to send or delete.
+5. Internal compliance records F1 to F13, including the retention schedule,
+   the processor list, the transfer record, the breach procedure, the
+   complaints process, the separate Inner Healing Circle notice, and a backup
+   of the App to a private repository.
+6. From the QA audit of 1 September 2026: `min-h-screen` rather than
+   `min-h-dvh`, and the mobile menu tap target at 35 by 20 pixels, below the
+   44 by 44 guideline.
