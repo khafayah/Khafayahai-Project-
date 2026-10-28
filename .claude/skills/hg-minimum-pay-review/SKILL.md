@@ -24,13 +24,13 @@ Khafayah is Head of Payroll at Hakim Group. Write to her as her assistant and tr
 
 ## 2. Check the data before calculating
 Expected columns (same order as the HG template Data sheet):
-A Payroll Ref | B Category | C Job type | D Basis | E Work location | F Pay basis (Annual/Hourly) | G Occupancy start date | H FTE | I FTE salary | J Pro-rated salary | K Contract hours a week | L Weeks worked | M Hourly rate | N Age at start date (never date of birth)
+A Payroll Ref | B Category | C Job type | D Basis | E Work location | F Pay basis (Annual/Hourly) | G Occupancy start date | H FTE | I FTE salary | J Pro-rated salary | K Contract hours a week | L Weeks worked | M Hourly rate | N Date of birth in Khafayah's own copy; ages only when shared with Claude
 Checks (report each one):
 - Column layout. Payroll exports often have an extra row-number column; a shifted column breaks every formula.
 - Row count, duplicate refs (people with two posts), blank ages, text errors (#N/A), ages under 16 or over 75.
 - Hourly rate should equal FTE salary / (FT hours x FT weeks). Hourly rates are stored as floats (12.709999), so always round to 2 decimal places before comparing.
 - For hourly-paid staff the pro-rated column is NOT yearly pay. Use hourly rate x contract hours x weeks worked.
-- Khafayah works out ages in her own file with =DATEDIF(DOB,DATE(yyyy,4,1),"Y") and sends ages only. If she sees 127, the formula is pointing at the hourly rate column; tell her to click the date of birth cell when building the formula.
+- The HG template works out age from date of birth in column O. Before sharing, Khafayah copies column O and pastes values over column N, so only ages remain (the template accepts ages in column N). Otherwise she works out ages in her own file with =DATEDIF(DOB,DATE(yyyy,4,1),"Y") and sends ages only. If she sees 127, the formula is pointing at the hourly rate column; tell her to click the date of birth cell when building the formula.
 - With ages only, the 'below current minimum' check uses age minus 1 (lowest possible current age) to avoid false alarms.
 
 ## 3. Calculation rules
