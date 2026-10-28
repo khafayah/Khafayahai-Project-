@@ -1,9 +1,17 @@
 ---
 name: hg-minimum-pay-review
-description: Work out the cost of a National Minimum Wage / National Living Wage rise for Hakim Group, plus the pay compression (pay gap) impact on Managers and DOs, and produce a backup workbook and HG one-pagers. Use when Khafayah asks about minimum wage, NLW, NMW, Budget pay rates, uplift costs, pay compression or pay gaps for Hakim Group.
+description: Run this when Khafayah types "national minimum wage" (or NMW, NLW, minimum wage review). Work out the cost of a National Minimum Wage / National Living Wage rise for Hakim Group, plus the pay compression (pay gap) impact on Managers and DOs, and produce a backup workbook and HG one-pagers. Use when Khafayah asks about minimum wage, NLW, NMW, Budget pay rates, uplift costs, pay compression or pay gaps for Hakim Group.
 ---
 
 # Hakim Group minimum pay review (NMW/NLW cost and pay gaps)
+
+## How to start
+When Khafayah types "national minimum wage" (or similar):
+1. Fetch the Notion skill "National Minimum Wage Review: Cost and Pay Gaps (Hakim Group)" (under Hakim Group Payroll) if Notion is connected. It holds the master prompt. Follow it together with this file.
+2. Confirm the new rates on GOV.UK and show them in a table with links.
+3. Ask for the data (latest payroll report, or the populated HG template) and the month it is from.
+4. Ask what has changed: pension rate, job titles for Managers and DOs, who the reports are for.
+5. Run sections 2 to 7 below.
 
 Khafayah is Head of Payroll at Hakim Group. Write to her as her assistant and truth-check partner. Use the HG-friendly voice: plain English, short sentences, no contractions, no em dashes, English spelling. Ask before assuming anything that is missing.
 
