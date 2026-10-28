@@ -9,7 +9,7 @@ description: Run this when Khafayah types "national minimum wage" (or NMW, NLW, 
 When Khafayah types "national minimum wage" (or similar):
 1. Fetch the Notion skill "National Minimum Wage Review: Cost and Pay Gaps (Hakim Group)" (under Hakim Group Payroll) if Notion is connected. It holds the master prompt. Follow it together with this file.
 2. Confirm the new rates on GOV.UK and show them in a table with links.
-3. Ask for the data (latest payroll report, or the populated HG template) and the month it is from.
+3. Ask for the data (latest payroll report, or the populated HG template) and the month it is from. Ask for AGE at the start date only. Never ask for, accept or store dates of birth (GDPR). If a file contains dates of birth, stop, tell Khafayah, and ask her to replace them with ages.
 4. Ask what has changed: pension rate, job titles for Managers and DOs, who the reports are for.
 5. Run sections 2 to 7 below.
 
@@ -24,13 +24,14 @@ Khafayah is Head of Payroll at Hakim Group. Write to her as her assistant and tr
 
 ## 2. Check the data before calculating
 Expected columns (same order as the HG template Data sheet):
-A Payroll Ref | B Category | C Job type | D Basis | E Work location | F Pay basis (Annual/Hourly) | G Occupancy start date | H FTE | I FTE salary | J Pro-rated salary | K Contract hours a week | L Weeks worked | M Hourly rate | N Date of birth or Age at start date
+A Payroll Ref | B Category | C Job type | D Basis | E Work location | F Pay basis (Annual/Hourly) | G Occupancy start date | H FTE | I FTE salary | J Pro-rated salary | K Contract hours a week | L Weeks worked | M Hourly rate | N Age at start date (never date of birth)
 Checks (report each one):
 - Column layout. Payroll exports often have an extra row-number column; a shifted column breaks every formula.
 - Row count, duplicate refs (people with two posts), blank ages, text errors (#N/A), ages under 16 or over 75.
 - Hourly rate should equal FTE salary / (FT hours x FT weeks). Hourly rates are stored as floats (12.709999), so always round to 2 decimal places before comparing.
 - For hourly-paid staff the pro-rated column is NOT yearly pay. Use hourly rate x contract hours x weeks worked.
-- Ages must be worked out from date of birth on the start date: =DATEDIF(DOB,DATE(yyyy,4,1),"Y"). If the age shows 127, the formula is pointing at the hourly rate column.
+- Khafayah works out ages in her own file with =DATEDIF(DOB,DATE(yyyy,4,1),"Y") and sends ages only. If she sees 127, the formula is pointing at the hourly rate column; tell her to click the date of birth cell when building the formula.
+- With ages only, the 'below current minimum' check uses age minus 1 (lowest possible current age) to avoid false alarms.
 
 ## 3. Calculation rules
 - New minimum by age on the start date. Apprentice rate only if job type is Apprentice AND (under 19 OR started within the last 12 months). Under 16: not entitled.
@@ -62,7 +63,7 @@ Checks (report each one):
 4. HG-voice cover email in a code block.
 
 ## 7. Data protection
-Never commit staff data (refs, pay, ages, dates of birth) to git or any external service. Keep files in the session scratchpad and send them to Khafayah. Remind her to password-protect the workbook. One-pagers carry no personal data.
+Never ask for dates of birth. Never commit staff data (refs, pay, ages) to git or any external service. Keep files in the session scratchpad and send them to Khafayah. Remind her to password-protect the workbook. One-pagers carry no personal data.
 
 ## Template
 The reusable workbook is HG_Minimum_Pay_and_Pay_Gaps_Template.xlsx (Data sheet columns A to N are inputs, O to AM are locked formulas; Rates sheet holds all rates and the pay gap group mapping in columns E to G). 2026 baseline for testing: October 2026 report, 3,033 jobs, 1,062 need a rise, £722,354.52 a year.
